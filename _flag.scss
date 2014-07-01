@@ -200,10 +200,10 @@ $tree-flag-collapse-at:        720px !default;
     .#{$tree-namespace}flag--top,
     %#{$tree-namespace}flag--top {
 
-        .#{$tree-namespace}flag__img,
-        %#{$tree-namespace}flag__img,
-        .#{$tree-namespace}flag__body,
-        %#{$tree-namespace}flag__body {
+        > .#{$tree-namespace}flag__img,
+        > %#{$tree-namespace}flag__img,
+        > .#{$tree-namespace}flag__body,
+        > %#{$tree-namespace}flag__body {
             vertical-align: top;
         }
 
@@ -218,10 +218,10 @@ $tree-flag-collapse-at:        720px !default;
     .#{$tree-namespace}flag--bottom,
     %#{$tree-namespace}flag--bottom {
 
-        .#{$tree-namespace}flag__img,
-        %#{$tree-namespace}flag__img,
-        .#{$tree-namespace}flag__body,
-        %#{$tree-namespace}flag__body {
+        > .#{$tree-namespace}flag__img,
+        > %#{$tree-namespace}flag__img,
+        > .#{$tree-namespace}flag__body,
+        > %#{$tree-namespace}flag__body {
             vertical-align: bottom;
         }
 
