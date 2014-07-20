@@ -9,6 +9,8 @@
 // alignments of the text and image. csswizardry.com/2013/05/the-flag-object
 
 // Predefine the variables below in order to alter and enable specific features.
+$tree-flag-namesapce           $tree-namespace !default;
+
 $tree-flag-gutter:             $tree-base-spacing-unit !default;
 $tree-flag-gutter--small:      halve($tree-flag-gutter) !default;
 $tree-flag-gutter--large:      double($tree-flag-gutter) !default;
@@ -29,8 +31,8 @@ $tree-flag-collapse-at:        720px !default;
 // 1. Allows us to control vertical alignments
 // 2. Force the object to be the full width of its parent. Combined with [1],
 //    this makes the object behave in a quasi-`display: block;` manner.
-.#{$tree-namespace}flag,
-%#{$tree-namespace}flag {
+.#{$tree-flag-namesapce}flag,
+%#{$tree-flag-namesapce}flag {
     display: table; // [1]
     width: 100%; // [2]
 }
@@ -38,17 +40,17 @@ $tree-flag-collapse-at:        720px !default;
     // Items within a flag object. There should only ever be one of each.
     //
     // 1. Default to aligning content to their middles.
-    .#{$tree-namespace}flag__img,
-    %#{$tree-namespace}flag__img,
-    .#{$tree-namespace}flag__body,
-    %#{$tree-namespace}flag__body {
+    .#{$tree-flag-namesapce}flag__img,
+    %#{$tree-flag-namesapce}flag__img,
+    .#{$tree-flag-namesapce}flag__body,
+    %#{$tree-flag-namesapce}flag__body {
         display: table-cell;
         vertical-align: middle; // [1]
     }
 
      // Flag images have a space between them and the body of the object.
-    .#{$tree-namespace}flag__img,
-    %#{$tree-namespace}flag__img {
+    .#{$tree-flag-namesapce}flag__img,
+    %#{$tree-flag-namesapce}flag__img {
         padding-right: $tree-flag-gutter;
 
         > img {
@@ -61,8 +63,8 @@ $tree-flag-collapse-at:        720px !default;
     // The container for the main content of the flag object.
     //
     // 1. Forces the `.flag__body` to take up all remaining space.
-    .#{$tree-namespace}flag__body,
-    %#{$tree-namespace}flag__body {
+    .#{$tree-flag-namesapce}flag__body,
+    %#{$tree-flag-namesapce}flag__body {
         width: 100%; // [1]
 
         &,
@@ -80,11 +82,11 @@ $tree-flag-collapse-at:        720px !default;
 
     // Small flags.
 
-    .#{$tree-namespace}flag--small,
-    %#{$tree-namespace}flag--small {
+    .#{$tree-flag-namesapce}flag--small,
+    %#{$tree-flag-namesapce}flag--small {
 
-        > .#{$tree-namespace}flag__img,
-        > %#{$tree-namespace}flag__img {
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img {
             padding-right: $tree-flag-gutter--small;
         }
 
@@ -92,11 +94,11 @@ $tree-flag-collapse-at:        720px !default;
 
             // Small reversed flags.
 
-            &.#{$tree-namespace}flag--rev,
-            &%#{$tree-namespace}flag--rev {
+            &.#{$tree-flag-namesapce}flag--rev,
+            &%#{$tree-flag-namesapce}flag--rev {
 
-                > .#{$tree-namespace}flag__img,
-                > %#{$tree-namespace}flag__img {
+                > .#{$tree-flag-namesapce}flag__img,
+                > %#{$tree-flag-namesapce}flag__img {
                     padding-right: 0;
                     padding-left:  $tree-flag-gutter--small;
                 }
@@ -113,11 +115,11 @@ $tree-flag-collapse-at:        720px !default;
 
     // Large flags.
 
-    .#{$tree-namespace}flag--large,
-    %#{$tree-namespace}flag--large {
+    .#{$tree-flag-namesapce}flag--large,
+    %#{$tree-flag-namesapce}flag--large {
 
-        > .#{$tree-namespace}flag__img,
-        > %#{$tree-namespace}flag__img {
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img {
             padding-right: $tree-flag-gutter--large;
         }
 
@@ -125,11 +127,11 @@ $tree-flag-collapse-at:        720px !default;
 
             // Large reversed flags.
 
-            &.#{$tree-namespace}flag--rev,
-            &%#{$tree-namespace}flag--rev {
+            &.#{$tree-flag-namesapce}flag--rev,
+            &%#{$tree-flag-namesapce}flag--rev {
 
-                > .#{$tree-namespace}flag__img,
-                > %#{$tree-namespace}flag__img {
+                > .#{$tree-flag-namesapce}flag__img,
+                > %#{$tree-flag-namesapce}flag__img {
                     padding-right: 0;
                     padding-left:  $tree-flag-gutter--large;
                 }
@@ -155,19 +157,19 @@ $tree-flag-collapse-at:        720px !default;
     // 2. …and reset it.
     // 3. Reassign margins to the correct sides.
 
-    .#{$tree-namespace}flag--rev,
-    %#{$tree-namespace}flag--rev {
+    .#{$tree-flag-namesapce}flag--rev,
+    %#{$tree-flag-namesapce}flag--rev {
         direction: rtl; // [1]
 
-        > .#{$tree-namespace}flag__img,
-        > %#{$tree-namespace}flag__img,
-        > .#{$tree-namespace}flag__body,
-        > %#{$tree-namespace}flag__body {
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img,
+        > .#{$tree-flag-namesapce}flag__body,
+        > %#{$tree-flag-namesapce}flag__body {
             direction: ltr; // [2]
         }
 
-        > .#{$tree-namespace}flag__img,
-        > %#{$tree-namespace}flag__img {
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img {
             padding-right: 0; // [3]
             padding-left: $tree-flag-gutter; // [3]
         }
@@ -184,11 +186,11 @@ $tree-flag-collapse-at:        720px !default;
 
     // Flush flag objects have no space between the image- and text-content.
 
-    .#{$tree-namespace}flag--flush,
-    %#{$tree-namespace}flag--flush {
+    .#{$tree-flag-namesapce}flag--flush,
+    %#{$tree-flag-namesapce}flag--flush {
 
-        > .#{$tree-namespace}flag__img,
-        > %#{$tree-namespace}flag__img {
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img {
             padding-right: 0;
             padding-left:  0;
         }
@@ -205,13 +207,13 @@ $tree-flag-collapse-at:        720px !default;
 
     // Vertically top aligned flag objects.
 
-    .#{$tree-namespace}flag--top,
-    %#{$tree-namespace}flag--top {
+    .#{$tree-flag-namesapce}flag--top,
+    %#{$tree-flag-namesapce}flag--top {
 
-        > .#{$tree-namespace}flag__img,
-        > %#{$tree-namespace}flag__img,
-        > .#{$tree-namespace}flag__body,
-        > %#{$tree-namespace}flag__body {
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img,
+        > .#{$tree-flag-namesapce}flag__body,
+        > %#{$tree-flag-namesapce}flag__body {
             vertical-align: top;
         }
 
@@ -223,13 +225,13 @@ $tree-flag-collapse-at:        720px !default;
 
     // Vertically bottom aligned flag objects.
 
-    .#{$tree-namespace}flag--bottom,
-    %#{$tree-namespace}flag--bottom {
+    .#{$tree-flag-namesapce}flag--bottom,
+    %#{$tree-flag-namesapce}flag--bottom {
 
-        > .#{$tree-namespace}flag__img,
-        > %#{$tree-namespace}flag__img,
-        > .#{$tree-namespace}flag__body,
-        > %#{$tree-namespace}flag__body {
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img,
+        > .#{$tree-flag-namesapce}flag__body,
+        > %#{$tree-flag-namesapce}flag__body {
             vertical-align: bottom;
         }
 
@@ -255,8 +257,8 @@ $tree-flag-collapse-at:        720px !default;
 
     @media screen and (max-width: $tree-flag-collapse-at) {
 
-        .#{$tree-namespace}flag--responsive,
-        %#{$tree-namespace}flag--responsive {
+        .#{$tree-flag-namesapce}flag--responsive,
+        %#{$tree-flag-namesapce}flag--responsive {
 
             @if ($tree-enable-flag--rev == true) {
 
@@ -266,18 +268,18 @@ $tree-flag-collapse-at:        720px !default;
             }
 
             &,
-            > .#{$tree-namespace}flag__img,
-            > %#{$tree-namespace}flag__img,
-            > .#{$tree-namespace}flag__body,
-            > %#{$tree-namespace}flag__body {
+            > .#{$tree-flag-namesapce}flag__img,
+            > %#{$tree-flag-namesapce}flag__img,
+            > .#{$tree-flag-namesapce}flag__body,
+            > %#{$tree-flag-namesapce}flag__body {
                 display: block;
             }
 
 
             // Rework the spacings on regular flag objects.
 
-            > .#{$tree-namespace}flag__img,
-            > %#{$tree-namespace}flag__img {
+            > .#{$tree-flag-namesapce}flag__img,
+            > %#{$tree-flag-namesapce}flag__img {
                 padding-right: 0;
                 padding-left:  0;
                 margin-bottom: $tree-flag-gutter;
@@ -291,11 +293,11 @@ $tree-flag-collapse-at:        720px !default;
                 //  spacings on flags that are also small flags in their regular
                 //  state.
 
-                &.#{$tree-namespace}flag--small,
-                &%#{$tree-namespace}flag--small {
+                &.#{$tree-flag-namesapce}flag--small,
+                &%#{$tree-flag-namesapce}flag--small {
 
-                    > .#{$tree-namespace}flag__img,
-                    > %#{$tree-namespace}flag__img {
+                    > .#{$tree-flag-namesapce}flag__img,
+                    > %#{$tree-flag-namesapce}flag__img {
                         padding-right: 0;
                         padding-left:  0;
                     }
@@ -312,11 +314,11 @@ $tree-flag-collapse-at:        720px !default;
                 // spacings on flags that are also large flags in their regular
                 // state.
 
-                &.#{$tree-namespace}flag--large,
-                &%#{$tree-namespace}flag--large {
+                &.#{$tree-flag-namesapce}flag--large,
+                &%#{$tree-flag-namesapce}flag--large {
 
-                    > .#{$tree-namespace}flag__img,
-                    > %#{$tree-namespace}flag__img {
+                    > .#{$tree-flag-namesapce}flag__img,
+                    > %#{$tree-flag-namesapce}flag__img {
                         padding-right: 0;
                         padding-left:  0;
                     }
