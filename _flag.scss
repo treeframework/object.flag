@@ -62,6 +62,12 @@ $tree-flag-collapse-at:        720px !default;
     .#{$tree-namespace}flag__body,
     %#{$tree-namespace}flag__body {
         width: 100%; // [1]
+
+        &,
+        > :last-child {
+            margin-bottom: 0;
+        }
+
     }
 
 
