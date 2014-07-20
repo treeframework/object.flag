@@ -9,7 +9,7 @@
 // alignments of the text and image. csswizardry.com/2013/05/the-flag-object
 
 // Predefine the variables below in order to alter and enable specific features.
-$tree-flag-namesapce           $tree-namespace !default;
+$tree-flag-namesapce:          $tree-namespace !default;
 
 $tree-flag-gutter:             $tree-base-spacing-unit !default;
 $tree-flag-gutter--small:      halve($tree-flag-gutter) !default;
