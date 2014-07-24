@@ -12,11 +12,15 @@
 $tree-flag-namesapce:          $tree-namespace !default;
 
 $tree-flag-gutter:             $tree-base-spacing-unit !default;
+$tree-flag-gutter--tiny:       quarter($tree-flag-gutter) !default;
 $tree-flag-gutter--small:      halve($tree-flag-gutter) !default;
 $tree-flag-gutter--large:      double($tree-flag-gutter) !default;
+$tree-flag-gutter--huge:       quadruple($tree-flag-gutter) !default;
 
+$tree-enable-flag--tiny:       false !default;
 $tree-enable-flag--small:      false !default;
 $tree-enable-flag--large:      false !default;
+$tree-enable-flag--huge:       false !default;
 $tree-enable-flag--rev:        false !default;
 $tree-enable-flag--flush:      false !default;
 $tree-enable-flag--top:        false !default;
@@ -78,6 +82,39 @@ $tree-flag-collapse-at:        720px !default;
 
 
 
+@if ($tree-enable-flag--tiny == true) {
+
+    // Tiny flags.
+
+    .#{$tree-flag-namesapce}flag--tiny,
+    %#{$tree-flag-namesapce}flag--tiny {
+
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img {
+            padding-right: $tree-flag-gutter--tiny;
+        }
+
+        @if ($tree-enable-flag--rev == true) {
+
+            // Tiny reversed flags.
+
+            &.#{$tree-flag-namesapce}flag--rev,
+            &%#{$tree-flag-namesapce}flag--rev {
+
+                > .#{$tree-flag-namesapce}flag__img,
+                > %#{$tree-flag-namesapce}flag__img {
+                    padding-right: 0;
+                    padding-left:  $tree-flag-gutter--tiny;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
 @if ($tree-enable-flag--small == true) {
 
     // Small flags.
@@ -134,6 +171,39 @@ $tree-flag-collapse-at:        720px !default;
                 > %#{$tree-flag-namesapce}flag__img {
                     padding-right: 0;
                     padding-left:  $tree-flag-gutter--large;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+@if ($tree-enable-flag--huge == true) {
+
+    // Huge flags.
+
+    .#{$tree-flag-namesapce}flag--huge,
+    %#{$tree-flag-namesapce}flag--huge {
+
+        > .#{$tree-flag-namesapce}flag__img,
+        > %#{$tree-flag-namesapce}flag__img {
+            padding-right: $tree-flag-gutter--huge;
+        }
+
+        @if ($tree-enable-flag--rev == true) {
+
+            // Huge reversed flags.
+
+            &.#{$tree-flag-namesapce}flag--rev,
+            &%#{$tree-flag-namesapce}flag--rev {
+
+                > .#{$tree-flag-namesapce}flag__img,
+                > %#{$tree-flag-namesapce}flag__img {
+                    padding-right: 0;
+                    padding-left:  $tree-flag-gutter--huge;
                 }
 
             }
@@ -285,6 +355,28 @@ $tree-flag-collapse-at:        720px !default;
                 margin-bottom: $tree-flag-gutter;
             }
 
+            @if ($tree-enable-flag--tiny == true) {
+
+                //  Tiny responsive flags.
+                //
+                //  Take a little more heavy-handed approach to reworking
+                //  spacings on flags that are also tiny flags in their regular
+                //  state.
+
+                &.#{$tree-flag-namesapce}flag--tiny,
+                &%#{$tree-flag-namesapce}flag--tiny {
+
+                    > .#{$tree-flag-namesapce}flag__img,
+                    > %#{$tree-flag-namesapce}flag__img {
+                        padding-right: 0;
+                        padding-left:  0;
+                        margin-bottom: $tree-flag-gutter--tiny;
+                    }
+
+                }
+
+            }
+
             @if ($tree-enable-flag--small == true) {
 
                 //  Small responsive flags.
@@ -300,6 +392,7 @@ $tree-flag-collapse-at:        720px !default;
                     > %#{$tree-flag-namesapce}flag__img {
                         padding-right: 0;
                         padding-left:  0;
+                        margin-bottom: $tree-flag-gutter--small;
                     }
 
                 }
@@ -321,6 +414,29 @@ $tree-flag-collapse-at:        720px !default;
                     > %#{$tree-flag-namesapce}flag__img {
                         padding-right: 0;
                         padding-left:  0;
+                        margin-bottom: $tree-flag-gutter--large;
+                    }
+
+                }
+
+            }
+
+            @if ($tree-enable-flag--huge == true) {
+
+                // Huge responsive flags.
+                //
+                // Take a little more heavy-handed approach to reworking
+                // spacings on flags that are also huge flags in their regular
+                // state.
+
+                &.#{$tree-flag-namesapce}flag--huge,
+                &%#{$tree-flag-namesapce}flag--huge {
+
+                    > .#{$tree-flag-namesapce}flag__img,
+                    > %#{$tree-flag-namesapce}flag__img {
+                        padding-right: 0;
+                        padding-left:  0;
+                        margin-bottom: $tree-flag-gutter--huge;
                     }
 
                 }
