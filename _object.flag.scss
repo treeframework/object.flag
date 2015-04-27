@@ -110,7 +110,7 @@ $tree-flag-collapse-at:          720px !default;
 
     // The container for the main content of the flag object.
     //
-    // 1. Forces the `.flag__body` to take up all remaining space.
+    // 1. Forces the `.o-flag__body` to take up all remaining space.
 
     .#{$tree-flag-namesapce}o-flag__body {
         width: 100%; // [1]
@@ -135,7 +135,7 @@ $tree-flag-collapse-at:          720px !default;
 
     .#{$tree-flag-namesapce}o-flag--tiny {
 
-        > .#{$tree-flag-namesapce}o-flag__img,
+        > .#{$tree-flag-namesapce}o-flag__img {
             padding-right: $tree-flag-gutter--tiny;
         }
 
@@ -170,7 +170,7 @@ $tree-flag-collapse-at:          720px !default;
 
     .#{$tree-flag-namesapce}o-flag--small {
 
-        > .#{$tree-flag-namesapce}o-flag__img,
+        > .#{$tree-flag-namesapce}o-flag__img {
             padding-right: $tree-flag-gutter--small;
         }
 
@@ -205,7 +205,7 @@ $tree-flag-collapse-at:          720px !default;
 
     .#{$tree-flag-namesapce}o-flag--large {
 
-        > .#{$tree-flag-namesapce}o-flag__img,
+        > .#{$tree-flag-namesapce}o-flag__img {
             padding-right: $tree-flag-gutter--large;
         }
 
