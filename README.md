@@ -25,6 +25,12 @@ You can install the `flag` module via Bower, npm, or copy and paste.
 $ bower install tree-flag --save
 ```
 
+Once installed, `@import` into your project in its Objects layer:
+
+```scss
+@import "bower_components/tree-flag/object.flag";
+```
+
 ### Install using npm:
 
 ```sh
@@ -52,10 +58,8 @@ Basic usage of the `flag` object uses the required classes:
 </div>
 ```
 
-The only valid children of the `.o-flag` node are `.o-flag__img` and
+The only valid children of the `.o-flag` node are `.o-flag__img` and 
 `.o-flag__body`.
-
-## Options
 
 ## Options
 
