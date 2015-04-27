@@ -1,42 +1,81 @@
-// *************************************
+// =============================================================================
 //
-//   #FLAG
+// Name:          Flag
 //
-// *************************************
+// Description:   Design patern similar to the media object, however it utilises
+//                `display: table[-cell];` to give us control over the vertical
+//                aligment of the text and image.
+//                csswizardry.com/2013/05/the-flag-object
+//
+// Block:         `o-flag`
+//
+// Elements:      `o-flag__img`
+//                `o-flag__body`
+//
+// Modifiers:     `o-flag--tiny`
+//                `o-flag--small`
+//                `o-flag--large`
+//                `o-flag--huge`
+//                `o-flag--rev`
+//                `o-flag--flush`
+//                `o-flag--top`
+//                `o-flag--bottom`
+//                `o-flag--responsive`
+//
+// Markup:
+//
+// <div class="o-flag">
+//     <div class="o-flag__img">
+//         <img class="o-flag__img src="/path/to/image.png" alt="" />
+//     </div>
+//     <div class="o-flag__body">
+//         <p>Text-like content goes here.<p>
+//     </div>
+// </div>
 
-// The flag object is a design pattern similar to the media object, however it
-// utilises `display: table[-cell];` to give us control over the vertical
-// alignments of the text and image. csswizardry.com/2013/05/the-flag-object
+// =============================================================================
+
+
+
+
+
+// Variables
+// =============================================================================
 
 // Predefine the variables below in order to alter and enable specific features.
-$tree-flag-namesapce:          $tree-namespace !default;
 
-$tree-flag-gutter:             $tree-base-spacing-unit !default;
-$tree-flag-gutter--tiny:       quarter($tree-flag-gutter) !default;
-$tree-flag-gutter--small:      halve($tree-flag-gutter) !default;
-$tree-flag-gutter--large:      double($tree-flag-gutter) !default;
-$tree-flag-gutter--huge:       quadruple($tree-flag-gutter) !default;
+$tree-flag-namesapce:            $tree-namespace !default;
 
-$tree-enable-flag--tiny:       false !default;
-$tree-enable-flag--small:      false !default;
-$tree-enable-flag--large:      false !default;
-$tree-enable-flag--huge:       false !default;
-$tree-enable-flag--rev:        false !default;
-$tree-enable-flag--flush:      false !default;
-$tree-enable-flag--top:        false !default;
-$tree-enable-flag--bottom:     false !default;
-$tree-enable-flag--responsive: false !default;
-$tree-flag-collapse-at:        720px !default;
+$tree-flag-gutter:               $tree-base-spacing-unit !default;
+$tree-flag-gutter--tiny:         quarter($tree-flag-gutter) !default;
+$tree-flag-gutter--small:        halve($tree-flag-gutter) !default;
+$tree-flag-gutter--large:        double($tree-flag-gutter) !default;
+$tree-flag-gutter--huge:         quadruple($tree-flag-gutter) !default;
+
+$tree-enable-flag--tiny:         false !default;
+$tree-enable-flag--small:        false !default;
+$tree-enable-flag--large:        false !default;
+$tree-enable-flag--huge:         false !default;
+$tree-enable-flag--rev:          false !default;
+$tree-enable-flag--flush:        false !default;
+$tree-enable-flag--top:          false !default;
+$tree-enable-flag--bottom:       false !default;
+$tree-enable-flag--responsive:   false !default;
+$tree-flag-collapse-at:          720px !default;
 
 
 
 
+
+// =============================================================================
+// Block: `o-flag`
+// =============================================================================
 
 // 1. Allows us to control vertical alignments
 // 2. Force the object to be the full width of its parent. Combined with [1],
 //    this makes the object behave in a quasi-`display: block;` manner.
-.#{$tree-flag-namesapce}flag,
-%#{$tree-flag-namesapce}flag {
+
+.#{$tree-flag-namesapce}o-flag {
     display: table; // [1]
     width: 100%; // [2]
 }
@@ -44,17 +83,19 @@ $tree-flag-collapse-at:        720px !default;
     // Items within a flag object. There should only ever be one of each.
     //
     // 1. Default to aligning content to their middles.
-    .#{$tree-flag-namesapce}flag__img,
-    %#{$tree-flag-namesapce}flag__img,
-    .#{$tree-flag-namesapce}flag__body,
-    %#{$tree-flag-namesapce}flag__body {
+
+    .#{$tree-flag-namesapce}o-flag__img,
+    .#{$tree-flag-namesapce}o-flag__body {
         display: table-cell;
         vertical-align: middle; // [1]
     }
 
+    // Element: `o-flag__img`
+    // =========================================================================
+
      // Flag images have a space between them and the body of the object.
-    .#{$tree-flag-namesapce}flag__img,
-    %#{$tree-flag-namesapce}flag__img {
+
+    .#{$tree-flag-namesapce}o-flag__img {
         padding-right: $tree-flag-gutter;
 
         > img {
@@ -64,11 +105,14 @@ $tree-flag-collapse-at:        720px !default;
 
     }
 
+    // Element: `o-flag__body`
+    // =========================================================================
+
     // The container for the main content of the flag object.
     //
     // 1. Forces the `.flag__body` to take up all remaining space.
-    .#{$tree-flag-namesapce}flag__body,
-    %#{$tree-flag-namesapce}flag__body {
+
+    .#{$tree-flag-namesapce}o-flag__body {
         width: 100%; // [1]
 
         &,
@@ -84,25 +128,27 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--tiny == true) {
 
+    // Modifier: `o-flag--tiny`
+    // =========================================================================
+
     // Tiny flags.
 
-    .#{$tree-flag-namesapce}flag--tiny,
-    %#{$tree-flag-namesapce}flag--tiny {
+    .#{$tree-flag-namesapce}o-flag--tiny {
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img {
+        > .#{$tree-flag-namesapce}o-flag__img,
             padding-right: $tree-flag-gutter--tiny;
         }
 
         @if ($tree-enable-flag--rev == true) {
 
+            // Modifier: `o-flag--rev`
+            // =================================================================
+
             // Tiny reversed flags.
 
-            &.#{$tree-flag-namesapce}flag--rev,
-            &%#{$tree-flag-namesapce}flag--rev {
+            &.#{$tree-flag-namesapce}o-flag--rev {
 
-                > .#{$tree-flag-namesapce}flag__img,
-                > %#{$tree-flag-namesapce}flag__img {
+                > .#{$tree-flag-namesapce}o-flag__img {
                     padding-right: 0;
                     padding-left:  $tree-flag-gutter--tiny;
                 }
@@ -117,25 +163,27 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--small == true) {
 
+    // Modifier: `o-flag--small`
+    // =========================================================================
+
     // Small flags.
 
-    .#{$tree-flag-namesapce}flag--small,
-    %#{$tree-flag-namesapce}flag--small {
+    .#{$tree-flag-namesapce}o-flag--small {
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img {
+        > .#{$tree-flag-namesapce}o-flag__img,
             padding-right: $tree-flag-gutter--small;
         }
 
         @if ($tree-enable-flag--rev == true) {
 
+            // Modifier: `o-flag--rev`
+            // =================================================================
+
             // Small reversed flags.
 
-            &.#{$tree-flag-namesapce}flag--rev,
-            &%#{$tree-flag-namesapce}flag--rev {
+            &.#{$tree-flag-namesapce}o-flag--rev {
 
-                > .#{$tree-flag-namesapce}flag__img,
-                > %#{$tree-flag-namesapce}flag__img {
+                > .#{$tree-flag-namesapce}o-flag__img {
                     padding-right: 0;
                     padding-left:  $tree-flag-gutter--small;
                 }
@@ -150,25 +198,27 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--large == true) {
 
+    // Modifier: `o-flag--large`
+    // =========================================================================
+
     // Large flags.
 
-    .#{$tree-flag-namesapce}flag--large,
-    %#{$tree-flag-namesapce}flag--large {
+    .#{$tree-flag-namesapce}o-flag--large {
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img {
+        > .#{$tree-flag-namesapce}o-flag__img,
             padding-right: $tree-flag-gutter--large;
         }
 
         @if ($tree-enable-flag--rev == true) {
 
+            // Modifier: `o-flag--rev`
+            // =================================================================
+
             // Large reversed flags.
 
-            &.#{$tree-flag-namesapce}flag--rev,
-            &%#{$tree-flag-namesapce}flag--rev {
+            &.#{$tree-flag-namesapce}o-flag--rev {
 
-                > .#{$tree-flag-namesapce}flag__img,
-                > %#{$tree-flag-namesapce}flag__img {
+                > .#{$tree-flag-namesapce}o-flag__img {
                     padding-right: 0;
                     padding-left:  $tree-flag-gutter--large;
                 }
@@ -183,25 +233,27 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--huge == true) {
 
+    // Modifier: `o-flag--huge`
+    // =========================================================================
+
     // Huge flags.
 
-    .#{$tree-flag-namesapce}flag--huge,
-    %#{$tree-flag-namesapce}flag--huge {
+    .#{$tree-flag-namesapce}o-flag--huge {
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img {
+        > .#{$tree-flag-namesapce}o-flag__img {
             padding-right: $tree-flag-gutter--huge;
         }
 
         @if ($tree-enable-flag--rev == true) {
 
+            // Modifier: `o-flag--rev`
+            // =================================================================
+
             // Huge reversed flags.
 
-            &.#{$tree-flag-namesapce}flag--rev,
-            &%#{$tree-flag-namesapce}flag--rev {
+            &.#{$tree-flag-namesapce}o-flag--rev {
 
-                > .#{$tree-flag-namesapce}flag__img,
-                > %#{$tree-flag-namesapce}flag__img {
+                > .#{$tree-flag-namesapce}o-flag__img {
                     padding-right: 0;
                     padding-left:  $tree-flag-gutter--huge;
                 }
@@ -220,26 +272,25 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--rev == true) {
 
-    // Reversed flag objects have their image-content to the right, and text-content
-    // to the left.
+    // Modifier: `o-flag--rev`
+    // =========================================================================
+
+    // Reversed flag objects have their image-content to the right, and
+    // text-content to the left.
     //
     // 1. Swap the rendered direction of the object…
     // 2. …and reset it.
     // 3. Reassign margins to the correct sides.
 
-    .#{$tree-flag-namesapce}flag--rev,
-    %#{$tree-flag-namesapce}flag--rev {
+    .#{$tree-flag-namesapce}o-flag--rev {
         direction: rtl; // [1]
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img,
-        > .#{$tree-flag-namesapce}flag__body,
-        > %#{$tree-flag-namesapce}flag__body {
+        > .#{$tree-flag-namesapce}o-flag__img,
+        > .#{$tree-flag-namesapce}o-flag__body {
             direction: ltr; // [2]
         }
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img {
+        > .#{$tree-flag-namesapce}o-flag__img {
             padding-right: 0; // [3]
             padding-left: $tree-flag-gutter; // [3]
         }
@@ -254,13 +305,14 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--flush == true) {
 
+    // Modifier: `o-flag--flush`
+    // =========================================================================
+
     // Flush flag objects have no space between the image- and text-content.
 
-    .#{$tree-flag-namesapce}flag--flush,
-    %#{$tree-flag-namesapce}flag--flush {
+    .#{$tree-flag-namesapce}o-flag--flush {
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img {
+        > .#{$tree-flag-namesapce}o-flag__img {
             padding-right: 0;
             padding-left:  0;
         }
@@ -275,15 +327,15 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--top == true) {
 
+    // Modifier: `o-flag--top`
+    // =========================================================================
+
     // Vertically top aligned flag objects.
 
-    .#{$tree-flag-namesapce}flag--top,
-    %#{$tree-flag-namesapce}flag--top {
+    .#{$tree-flag-namesapce}o-flag--top {
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img,
-        > .#{$tree-flag-namesapce}flag__body,
-        > %#{$tree-flag-namesapce}flag__body {
+        > .#{$tree-flag-namesapce}o-flag__img,
+        > .#{$tree-flag-namesapce}o-flag__body {
             vertical-align: top;
         }
 
@@ -293,15 +345,15 @@ $tree-flag-collapse-at:        720px !default;
 
 @if ($tree-enable-flag--bottom == true) {
 
+    // Modifier: `o-flag--bottom`
+    // =========================================================================
+
     // Vertically bottom aligned flag objects.
 
-    .#{$tree-flag-namesapce}flag--bottom,
-    %#{$tree-flag-namesapce}flag--bottom {
+    .#{$tree-flag-namesapce}o-flag--bottom {
 
-        > .#{$tree-flag-namesapce}flag__img,
-        > %#{$tree-flag-namesapce}flag__img,
-        > .#{$tree-flag-namesapce}flag__body,
-        > %#{$tree-flag-namesapce}flag__body {
+        > .#{$tree-flag-namesapce}o-flag__img,
+        > .#{$tree-flag-namesapce}o-flag__body {
             vertical-align: bottom;
         }
 
@@ -327,29 +379,29 @@ $tree-flag-collapse-at:        720px !default;
 
     @media screen and (max-width: $tree-flag-collapse-at) {
 
-        .#{$tree-flag-namesapce}flag--responsive,
-        %#{$tree-flag-namesapce}flag--responsive {
+        // Modifier: `o-flag--responsive`
+        // =====================================================================
+
+        .#{$tree-flag-namesapce}o-flag--responsive {
 
             @if ($tree-enable-flag--rev == true) {
 
                 // Disable reversal of content because there is no concept of
                 // ‘reversed’ in a stacked layout.
+
                 direction: ltr;
             }
 
             &,
-            > .#{$tree-flag-namesapce}flag__img,
-            > %#{$tree-flag-namesapce}flag__img,
-            > .#{$tree-flag-namesapce}flag__body,
-            > %#{$tree-flag-namesapce}flag__body {
+            > .#{$tree-flag-namesapce}o-flag__img,
+            > .#{$tree-flag-namesapce}o-flag__body {
                 display: block;
             }
 
 
             // Rework the spacings on regular flag objects.
 
-            > .#{$tree-flag-namesapce}flag__img,
-            > %#{$tree-flag-namesapce}flag__img {
+            > .#{$tree-flag-namesapce}o-flag__img {
                 padding-right: 0;
                 padding-left:  0;
                 margin-bottom: $tree-flag-gutter;
@@ -357,17 +409,18 @@ $tree-flag-collapse-at:        720px !default;
 
             @if ($tree-enable-flag--tiny == true) {
 
+                // Modifier: `o-flag--tiny`
+                // =============================================================
+
                 //  Tiny responsive flags.
                 //
                 //  Take a little more heavy-handed approach to reworking
                 //  spacings on flags that are also tiny flags in their regular
                 //  state.
 
-                &.#{$tree-flag-namesapce}flag--tiny,
-                &%#{$tree-flag-namesapce}flag--tiny {
+                &.#{$tree-flag-namesapce}o-flag--tiny {
 
-                    > .#{$tree-flag-namesapce}flag__img,
-                    > %#{$tree-flag-namesapce}flag__img {
+                    > .#{$tree-flag-namesapce}o-flag__img {
                         padding-right: 0;
                         padding-left:  0;
                         margin-bottom: $tree-flag-gutter--tiny;
@@ -379,17 +432,18 @@ $tree-flag-collapse-at:        720px !default;
 
             @if ($tree-enable-flag--small == true) {
 
+                // Modifier: `o-flag--small`
+                // =============================================================
+
                 //  Small responsive flags.
                 //
                 //  Take a little more heavy-handed approach to reworking
                 //  spacings on flags that are also small flags in their regular
                 //  state.
 
-                &.#{$tree-flag-namesapce}flag--small,
-                &%#{$tree-flag-namesapce}flag--small {
+                &.#{$tree-flag-namesapce}o-flag--small {
 
-                    > .#{$tree-flag-namesapce}flag__img,
-                    > %#{$tree-flag-namesapce}flag__img {
+                    > .#{$tree-flag-namesapce}o-flag__img {
                         padding-right: 0;
                         padding-left:  0;
                         margin-bottom: $tree-flag-gutter--small;
@@ -401,17 +455,18 @@ $tree-flag-collapse-at:        720px !default;
 
             @if ($tree-enable-flag--large == true) {
 
+                // Modifier: `o-flag--large`
+                // =============================================================
+
                 // Large responsive flags.
                 //
                 // Take a little more heavy-handed approach to reworking
                 // spacings on flags that are also large flags in their regular
                 // state.
 
-                &.#{$tree-flag-namesapce}flag--large,
-                &%#{$tree-flag-namesapce}flag--large {
+                &.#{$tree-flag-namesapce}o-flag--large {
 
-                    > .#{$tree-flag-namesapce}flag__img,
-                    > %#{$tree-flag-namesapce}flag__img {
+                    > .#{$tree-flag-namesapce}o-flag__img {
                         padding-right: 0;
                         padding-left:  0;
                         margin-bottom: $tree-flag-gutter--large;
@@ -423,17 +478,18 @@ $tree-flag-collapse-at:        720px !default;
 
             @if ($tree-enable-flag--huge == true) {
 
+                // Modifier: `o-flag-huge`
+                // =============================================================
+
                 // Huge responsive flags.
                 //
                 // Take a little more heavy-handed approach to reworking
                 // spacings on flags that are also huge flags in their regular
                 // state.
 
-                &.#{$tree-flag-namesapce}flag--huge,
-                &%#{$tree-flag-namesapce}flag--huge {
+                &.#{$tree-flag-namesapce}o-flag--huge {
 
-                    > .#{$tree-flag-namesapce}flag__img,
-                    > %#{$tree-flag-namesapce}flag__img {
+                    > .#{$tree-flag-namesapce}o-flag__img {
                         padding-right: 0;
                         padding-left:  0;
                         margin-bottom: $tree-flag-gutter--huge;
