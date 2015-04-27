@@ -78,7 +78,7 @@ For example:
 ```html
 <div class="o-flag  o-flag--flush">
     <div class="o-flag__img">
-        <img class="o-flag__img src="/path/to/image.png" alt="" />
+        <img class="o-flag__img" src="/path/to/image.png" alt="" />
     </div>
     <div class="o-flag__body">
         <p>Text-like content goes here.<p>
