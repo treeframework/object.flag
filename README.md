@@ -15,7 +15,7 @@ If you install the `flag` object using Bower or npm, you will get these
 dependencies at the same time. If not using Bower or npm, please be sure to 
 install and `@import` these dependencies in the relevant way.
 
-## Instalation
+## Installation
 
 You can install the `flag` module via Bower, npm, or copy and paste.
 
