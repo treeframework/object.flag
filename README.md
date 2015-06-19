@@ -50,10 +50,10 @@ Basic usage of the `flag` object uses the required classes:
 ```html
 <div class="o-flag">
     <div class="o-flag__img">
-        <img class="o-flag__img" src="/path/to/image.png" alt="" />
+        <img src="/path/to/image.png" alt="" />
     </div>
     <div class="o-flag__body">
-        <p>Text-like content goes here.<p>
+        <p>Text-like content goes here.</p>
     </div>
 </div>
 ```
